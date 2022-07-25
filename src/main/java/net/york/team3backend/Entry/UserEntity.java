@@ -22,11 +22,17 @@ public class UserEntity {
     private UUID token;
 
     @OneToMany
-    List<PurchaseEntity> Purchases = new ArrayList<>();
+    List<PurchaseEntity> purchases = new ArrayList<>();
 
     @Autowired
-    public UserEntity(){
+    public UserEntity(){}
 
+    public UserEntity(String name, String email, String password, String role, List<PurchaseEntity> purchases) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.purchases = purchases;
     }
 
     public Long getId() {
@@ -66,11 +72,11 @@ public class UserEntity {
     }
 
     public List<PurchaseEntity> getPurchases() {
-        return Purchases;
+        return purchases;
     }
 
     public void setPurchases(List<PurchaseEntity> purchases) {
-        Purchases = purchases;
+        this.purchases = purchases;
     }
 
     public UUID getToken() {

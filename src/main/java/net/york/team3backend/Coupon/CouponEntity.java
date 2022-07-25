@@ -9,23 +9,23 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Coupon {
+public class CouponEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Long id;
+    private Long id;
 
-    String category;
+    private String category;
 
-    Double salePercentage;
+    private Double salePercentage;
 
-    Date start;
+    private Date startDate;
 
-    Date end;
+    private Date endDate;
 
     @Nullable
-    String code;
+    private String code;
 
-    public Coupon(){}
+    public CouponEntity(){}
 
     public Long getId() {
         return id;
@@ -48,19 +48,19 @@ public class Coupon {
     }
 
     public Date getStart() {
-        return start;
+        return startDate;
     }
 
     public void setStart(Date start) {
-        this.start = start;
+        this.startDate = start;
     }
 
     public Date getEnd() {
-        return end;
+        return endDate;
     }
 
     public void setEnd(Date end) {
-        this.end = end;
+        this.endDate = end;
     }
 
     @Nullable

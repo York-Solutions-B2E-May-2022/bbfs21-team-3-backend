@@ -18,7 +18,7 @@ public class UserEntityService {
     }
 
     public void register(UserEntity userEntity){
-        if (userEntityRepository.findByName(userEntity.getName()).isPresent()){
+        if (userEntityRepository.findByEmail(userEntity.getEmail()).isPresent()){
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         } else {
             UserEntity newUser = new UserEntity();
