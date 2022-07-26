@@ -24,7 +24,7 @@ public class UserEntity {
     @OneToMany
     List<PurchaseEntity> purchases = new ArrayList<>();
 
-    @Autowired
+
     public UserEntity(){}
 
     public UserEntity(String name, String email, String password, String role, List<PurchaseEntity> purchases) {
@@ -71,13 +71,13 @@ public class UserEntity {
         this.role = role;
     }
 
-    public List<PurchaseEntity> getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(List<PurchaseEntity> purchases) {
-        this.purchases = purchases;
-    }
+//    public List<PurchaseEntity> getPurchases() {
+//        return purchases;
+//    }
+//
+//    public void setPurchases(List<PurchaseEntity> purchases) {
+//        this.purchases = purchases;
+//    }
 
     public UUID getToken() {
         return token;

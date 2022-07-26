@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -23,8 +24,13 @@ public class UserEntityController {
     }
 
     @GetMapping("/login")
-    public UserEntity login(@RequestParam String username, @RequestParam String password){
-        return userEntityService.login(username, password);
+    public UserEntity login(@RequestParam String user, @RequestParam String password){
+        return userEntityService.login(user, password);
+    }
+
+    @GetMapping("/logout")
+    public void logout(@RequestParam UUID token){
+        userEntityService.logout(token);
     }
     //Cookie Login Please Keep
     @GetMapping("/")

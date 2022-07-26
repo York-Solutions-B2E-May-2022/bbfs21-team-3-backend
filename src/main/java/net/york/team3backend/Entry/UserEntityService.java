@@ -15,8 +15,8 @@ import java.util.UUID;
 
 @Service
 public class UserEntityService {
-    UserEntityRepository userEntityRepository;
-    HttpServletResponse response;
+    private UserEntityRepository userEntityRepository;
+    private HttpServletResponse response;
     private HashMap<UUID, Long> tokenMap;
 
 
@@ -71,6 +71,7 @@ public class UserEntityService {
     }
 
     public UserEntity login(String user, String password){
+        System.out.println(user+password);
         Optional<UserEntity> userEntity = userEntityRepository.findByNameAndPassword(user, password);
         if (userEntity.isPresent()){
             UUID token = UUID.randomUUID();
@@ -78,6 +79,15 @@ public class UserEntityService {
             login.setToken(token);
             userEntityRepository.save(login);
             return login;
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public void logout(UUID token){
+        Optional<UserEntity> userEntity = userEntityRepository.findByToken(token);
+        if (userEntity.isPresent()){
+            userEntity.get().setToken(null);
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

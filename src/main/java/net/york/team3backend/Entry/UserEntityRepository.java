@@ -4,6 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface UserEntityRepository extends CrudRepository<UserEntity, Long> {
@@ -11,5 +12,6 @@ public interface UserEntityRepository extends CrudRepository<UserEntity, Long> {
 
     Optional<UserEntity> findByNameAndPassword(String username, String password);
     Optional<UserEntity> findByEmail(String email);
+    Optional<UserEntity> findByToken(UUID token);
 }
 
