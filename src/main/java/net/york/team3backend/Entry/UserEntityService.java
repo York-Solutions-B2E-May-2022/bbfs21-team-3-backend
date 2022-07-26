@@ -88,6 +88,7 @@ public class UserEntityService {
         Optional<UserEntity> userEntity = userEntityRepository.findByToken(token);
         if (userEntity.isPresent()){
             userEntity.get().setToken(null);
+            userEntityRepository.save(userEntity.get());
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
